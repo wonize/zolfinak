@@ -65,5 +65,9 @@
     "hooks": {
       "pre-commit": "npm run lint"
     }
+  },
+  "volta": {
+    "node": "20.11.0",
+    "npm": "10.3.0"
   }
 }
