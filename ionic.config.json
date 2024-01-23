@@ -1,0 +1,7 @@
+{
+  "name": "saloni",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
