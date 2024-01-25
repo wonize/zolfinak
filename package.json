@@ -12,7 +12,9 @@
     "lint": "npm run eslint && npm run prettier -- --check",
     "fmt": "npm run eslint -- --fix && npm run prettier -- --write",
     "prettier": "prettier \"**/*.ts\"",
-    "eslint": "eslint . --ext .ts"
+    "eslint": "eslint . --ext .ts",
+    "and:list": "ionic capacitor run android --list",
+    "and:external": "ionic capacitor run android --external"
   },
   "dependencies": {
     "@capacitor/android": "^5.6.0",
