@@ -1,10 +1,8 @@
 {
-  "props": "WithTranslation & RouteComponentProps<TParam>",
-  "home": {
-    "hero": { "title": "All your needs,<br/>one app" },
-    "hubspoke": {
-      "title": "WHAT DO YOU NEED?"
-    }
-  },
-  "translation": {}
+  "home_hero_title": "هر چی که بخواهی,<br/>تو دستاته",
+  "home_inline_search_placeholder": "جستجو",
+  "home_hubspoke_title": "دنبال چی می‌گردی؟",
+  "settings_title": "تنظیمات",
+  "settings_about_link_text": "درباره ما",
+  "settings_language_label": "زبان‌ها"
 }

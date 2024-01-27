@@ -1,10 +1,8 @@
 {
-  "props": "WithTranslation & RouteComponentProps<TParam>",
-  "home": {
-    "hero": { "title": "All your needs,<br/>one app" },
-    "hubspoke": {
-      "title": "WHAT DO YOU NEED?"
-    }
-  },
-  "translation": {}
+  "home_hero_title": "All your needs,<br/>one app",
+  "home_inline_search_placeholder": "search",
+  "home_hubspoke_title": "WHAT DO YOU NEED?",
+  "settings_title": "Settings",
+  "settings_about_link_text": "About",
+  "settings_language_label": "Language"
 }
