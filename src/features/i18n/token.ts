@@ -1,4 +1,5 @@
-export interface Token {
+export type Token = {
+  translation: Record<string, string>;
   home: {
     hero: {
       title: string;
@@ -7,5 +8,4 @@ export interface Token {
       title: string;
     };
   };
-  translation: Record<string, string>;
-}
+};
