@@ -1,5 +1,6 @@
 import { IonContent, IonHeader, IonIcon, IonItem, IonList, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
-import { globeOutline, informationCircleOutline } from 'ionicons/icons';
+import { informationCircleOutline } from 'ionicons/icons';
+import { SettingItemSelectLanguage } from './SelectLanguage';
 import './SettingsPage.css';
 
 const Tab3: React.FC = () => {
@@ -17,10 +18,7 @@ const Tab3: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-          <IonItem routerLink="/settings/language">
-            <IonIcon slot="start" icon={globeOutline} />
-            <IonText>Languages and Regions</IonText>
-          </IonItem>
+          <SettingItemSelectLanguage />
           <IonItem routerLink="/settings/about">
             <IonIcon slot="start" icon={informationCircleOutline} />
             <IonText>About</IonText>
