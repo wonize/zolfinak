@@ -1,0 +1,10 @@
+{
+  "props": "WithTranslation & RouteComponentProps<TParam>",
+  "home": {
+    "hero": { "title": "All your needs,<br/>one app" },
+    "hubspoke": {
+      "title": "WHAT DO YOU NEED?"
+    }
+  },
+  "translation": {}
+}
