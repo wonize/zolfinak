@@ -1,9 +1,9 @@
 import { LangCode } from './code';
-import type { Token } from './token';
+import type { I18nToken, Token } from './token';
 
-async function load(code: LangCode): Promise<Token> {
-  const locale: Token = await import(`../../locales/${code}.json`);
-  return locale as Token;
+async function load(code: LangCode): Promise<I18nToken> {
+  const translation: Token = await import(`../../locales/${code}.json`);
+  return { translation };
 }
 
 export const LocaleMap = {
