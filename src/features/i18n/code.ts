@@ -33,6 +33,13 @@ export type LangCode = (typeof LangCode)[LangName];
 export const DEFAULT_LANG_NAME: Readonly<LangName> = LangName.ENGLISH;
 export const DEFAULT_LANG_CODE: Readonly<(typeof LangCode)[typeof DEFAULT_LANG_NAME]> = LangCode[DEFAULT_LANG_NAME];
 
+// FIXME: `i18n.init({ lng })` isn't accept Promise
+/// typeof `lng` value  should be only `string | undefined`, but `getLastLanguageCode` return a Promise
+/// in `getLastLanguageCode` should wait to get data from `Preferences` storage
+/// the `Preferences` is Promise
 export function getLastLanguageCode(): LangCode {
-  return <LangCode>(localStorage.getItem('lng') ?? DEFAULT_LANG_CODE);
+  // TODO:
+  /// const lng = Preferences.get({ key: 'lng' });
+  /// return <LangCode>(lng.value ?? DEFAULT_LANG_CODE);
+  return DEFAULT_LANG_CODE;
 }
