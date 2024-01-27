@@ -6,6 +6,8 @@ const HubSpokeGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;
   row-gap: 1.5em;
+  place-content: stretch;
+  place-items: stretch;
 `;
 
 export { HubSpokeGrid };

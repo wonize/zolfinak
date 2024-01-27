@@ -10,8 +10,8 @@ const IconWrapper = styled.div`
   flex-direction: row;
   place-content: center;
   place-items: center;
-  width: 64pt;
-  height: 64pt;
+  width: 5em;
+  height: 5em;
 `;
 
 const Icon = styled(IonIcon).attrs({ size: 'large', 'aria-hidden': true })``;
@@ -29,10 +29,10 @@ const Wrapper = styled(IonLabel).attrs({ tabIndex: 1 })`
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
-  row-gap: 16pt;
+  row-gap: 1em;
   border: none;
   outline: none;
   cursor: pointer;
@@ -45,13 +45,13 @@ const Wrapper = styled(IonLabel).attrs({ tabIndex: 1 })`
   &:hover,
   &:focus {
     transform: scale(0.92);
-    row-gap: 24pt;
+    row-gap: 1.5em;
   }
   &:hover ${IconWrapper}, &:focus ${IconWrapper} {
     color: #dde;
     background: #464645;
-    width: 48pt;
-    height: 48pt;
+    width: 4.5em;
+    height: 4.5em;
     transform: scale(1.3);
   }
 `;
