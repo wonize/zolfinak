@@ -20,12 +20,11 @@ import {
   medkitOutline,
   personOutline,
 } from 'ionicons/icons';
+import moment from 'moment';
+import { styled } from 'styled-components';
 import { HubSpokeGrid } from '../components/HubSpokeGrid';
 import { HubSpokeItem } from '../components/HubSpokeItem';
 import './HomePage.css';
-
-import { styled } from 'styled-components';
-import moment from 'moment';
 
 const HubSpokeTitle = styled.div`
   display: flex;
@@ -47,7 +46,7 @@ const HubSpokeWrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
   padding: 1em;
-  row-gap: 1rem;
+  row-gap: 1em;
 `;
 
 const Tab1: React.FC = () => {
@@ -58,7 +57,13 @@ const Tab1: React.FC = () => {
         <IonToolbar>
           <IonButtons slot="end">
             <IonButton
-              style={{ backgroundColor: 'white', borderRadius: '4pt', width: '2em', height: '2em', margin: '1em 1em' }}
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '4pt',
+                width: '2em',
+                height: '2em',
+                margin: '1em 1em',
+              }}
               color="light"
             >
               <IonIcon size="small" icon={personOutline} />
@@ -67,7 +72,7 @@ const Tab1: React.FC = () => {
           <IonTitle>{today}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen className="ion-padding">
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">
@@ -109,12 +114,6 @@ const Tab1: React.FC = () => {
             </HubSpokeItem>
           </HubSpokeGrid>
         </HubSpokeWrapper>
-        <h1>
-          Hello
-          <br />
-          <br />
-          Next
-        </h1>
       </IonContent>
     </IonPage>
   );
