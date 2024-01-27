@@ -1,9 +1,10 @@
 {
-    "recommendations": [
-        "ionic.ionic",
-        "msjsdiag.cordova-tools",
-        "styled-components.vscode-styled-components",
-        "editorconfig.editorconfig",
-        "naumovs.color-highlight"
-    ]
+  "recommendations": [
+    "ionic.ionic",
+    "msjsdiag.cordova-tools",
+    "styled-components.vscode-styled-components",
+    "editorconfig.editorconfig",
+    "naumovs.color-highlight",
+    "lokalise.i18n-ally"
+  ]
 }
