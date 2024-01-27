@@ -21,6 +21,7 @@ import {
   personOutline,
 } from 'ionicons/icons';
 import moment from 'moment';
+import { Trans, WithTranslation, withTranslation } from 'react-i18next';
 import { styled } from 'styled-components';
 import { HubSpokeGrid } from '../components/HubSpokeGrid';
 import { HubSpokeItem } from '../components/HubSpokeItem';
@@ -49,7 +50,7 @@ const HubSpokeWrapper = styled.div`
   row-gap: 1em;
 `;
 
-const Tab1: React.FC = () => {
+const HomePage: React.FC<WithTranslation> = ({ t, i18n }) => {
   const today = moment().format('ddd DD MMM YYYY');
   return (
     <IonPage>
@@ -76,16 +77,14 @@ const Tab1: React.FC = () => {
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">
-              All your needs,
-              <br />
-              one app
+              <Trans i18nKey={'home_hero_title'} />
             </IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonSearchbar />
+        <IonSearchbar placeholder={t('home_inline_search_placeholder')} />
         <HubSpokeWrapper>
           <HubSpokeTitle>
-            <IonLabel>WHAT DO YOU NEED?</IonLabel>
+            <IonLabel>{t('home_hubspoke_title')}</IonLabel>
             <IonIcon icon={ellipsisHorizontalOutline} />
           </HubSpokeTitle>
           <HubSpokeGrid>
@@ -119,4 +118,4 @@ const Tab1: React.FC = () => {
   );
 };
 
-export default Tab1;
+export default withTranslation()(HomePage);

@@ -2,31 +2,30 @@ import { IonContent, IonHeader, IonIcon, IonItem, IonList, IonPage, IonText, Ion
 import { informationCircleOutline } from 'ionicons/icons';
 import { SettingItemSelectLanguage } from './SelectLanguage';
 import './SettingsPage.css';
+import { WithTranslation, withTranslation } from 'react-i18next';
 
-const Tab3: React.FC = () => {
-  return (
-    <IonPage>
-      <IonHeader>
+const SettingsPage: React.FC<WithTranslation> = ({ t }) => (
+  <IonPage>
+    <IonHeader>
+      <IonToolbar>
+        <IonTitle>{t('settings_title')}</IonTitle>
+      </IonToolbar>
+    </IonHeader>
+    <IonContent fullscreen>
+      <IonHeader collapse="condense">
         <IonToolbar>
-          <IonTitle>Settings</IonTitle>
+          <IonTitle size="large">{t('settings_title')}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Settings</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonList>
-          <SettingItemSelectLanguage />
-          <IonItem routerLink="/settings/about">
-            <IonIcon slot="start" icon={informationCircleOutline} />
-            <IonText>About</IonText>
-          </IonItem>
-        </IonList>
-      </IonContent>
-    </IonPage>
-  );
-};
+      <IonList>
+        <SettingItemSelectLanguage />
+        <IonItem routerLink="/settings/about">
+          <IonIcon slot="start" icon={informationCircleOutline} />
+          <IonText>{t('settings_about_link_text')}</IonText>
+        </IonItem>
+      </IonList>
+    </IonContent>
+  </IonPage>
+);
 
-export default Tab3;
+export default withTranslation()(SettingsPage);
