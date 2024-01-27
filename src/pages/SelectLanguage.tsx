@@ -1,27 +1,28 @@
 import { IonIcon, IonItem, IonSelect, IonSelectOption } from '@ionic/react';
 import { languageOutline } from 'ionicons/icons';
+import { WithTranslation, withTranslation } from 'react-i18next';
+import { LangCode, LangNativeName } from '../features/i18n/code';
+import { changeLanguage } from '../features/i18n/i18n';
 
-enum Language {
-  ENGLISH = 'en-US',
-  PERSIAN = 'fa-IR',
-  TURKISH = 'tk-TK',
-  ARABIC = 'ar-IQ',
-  DEFAULT = PERSIAN,
-}
-
-function SettingItemSelectLanguage() {
-  const selected_language = /* useStore().language || */ Language.DEFAULT;
+const SettingItemSelectLanguage = withTranslation()(function SettingItemSelectLanguage({ t, i18n }: WithTranslation) {
   return (
     <IonItem>
       <IonIcon slot="start" icon={languageOutline} />
-      <IonSelect label="Language" labelPlacement="start" value={selected_language}>
-        <IonSelectOption value={Language.ENGLISH}>English</IonSelectOption>
-        <IonSelectOption value={Language.PERSIAN}>Persian</IonSelectOption>
-        <IonSelectOption value={Language.TURKISH}>Turkish</IonSelectOption>
-        <IonSelectOption value={Language.ARABIC}>Arabic</IonSelectOption>
+      <IonSelect
+        label={t('settings_language_label')}
+        labelPlacement="start"
+        value={i18n.language}
+        onIonChange={(event) => changeLanguage(event.target.value)}
+      >
+        <IonSelectOption value={LangCode['ENGLISH']}>{LangNativeName['ENGLISH']}</IonSelectOption>
+        <IonSelectOption value={LangCode['PERSIAN']}>{LangNativeName['PERSIAN']}</IonSelectOption>
+        <IonSelectOption value={LangCode['TURKISH']}>{LangNativeName['TURKISH']}</IonSelectOption>
+        <IonSelectOption value={LangCode['RUSSIAN']}>{LangNativeName['RUSSIAN']}</IonSelectOption>
+        <IonSelectOption value={LangCode['CHINESE']}>{LangNativeName['CHINESE']}</IonSelectOption>
+        <IonSelectOption value={LangCode['ARABIC']}>{LangNativeName['ARABIC']}</IonSelectOption>
       </IonSelect>
     </IonItem>
   );
-}
+});
 
 export { SettingItemSelectLanguage };
