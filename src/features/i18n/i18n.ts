@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { createElement, type PropsWithChildren } from 'react';
 import { initReactI18next, I18nextProvider as RealI18nextProvider } from 'react-i18next';
-import { DEFAULT_LANG_CODE, getLastLanguageCode } from './code';
+import { DEFAULT_LANG_CODE, getLastLanguageCode, LangCode, LangName } from './code';
 import { LocaleMap as resources } from './locales';
 
 declare module 'i18next' {
@@ -14,7 +14,12 @@ i18n.use(initReactI18next).init({
   resources,
   lng: getLastLanguageCode(),
   fallbackLng: DEFAULT_LANG_CODE,
+  supportedLngs: [LangCode[LangName.ENGLISH], LangCode[LangName.PERSIAN]],
 });
+
+export function changeLanguage(lng: LangCode): void {
+  i18n.changeLanguage(lng);
+}
 
 export function I18nextProvider(props: PropsWithChildren) {
   return createElement(RealI18nextProvider, { i18n }, props.children);
