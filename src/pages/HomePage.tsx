@@ -26,6 +26,7 @@ import { styled } from 'styled-components';
 import { HubSpokeGrid } from '../components/HubSpokeGrid';
 import { HubSpokeItem } from '../components/HubSpokeItem';
 import './HomePage.css';
+import { I18nScope } from '../features/i18n/token';
 
 const HubSpokeTitle = styled.div`
   display: flex;
@@ -77,14 +78,14 @@ const HomePage: React.FC<WithTranslation> = ({ t, i18n }) => {
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">
-              <Trans i18nKey={'home_hero_title'} />
+              <Trans i18nKey={'hero_title'} t={t} />
             </IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonSearchbar placeholder={t('home_inline_search_placeholder')} />
+        <IonSearchbar placeholder={t('inline_search_placeholder')} />
         <HubSpokeWrapper>
           <HubSpokeTitle>
-            <IonLabel>{t('home_hubspoke_title')}</IonLabel>
+            <IonLabel>{t('hubspoke_title')}</IonLabel>
             <IonIcon icon={ellipsisHorizontalOutline} />
           </HubSpokeTitle>
           <HubSpokeGrid>
@@ -118,4 +119,4 @@ const HomePage: React.FC<WithTranslation> = ({ t, i18n }) => {
   );
 };
 
-export default withTranslation()(HomePage);
+export default withTranslation(I18nScope.HOME)(HomePage);

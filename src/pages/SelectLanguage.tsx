@@ -3,13 +3,17 @@ import { languageOutline } from 'ionicons/icons';
 import { WithTranslation, withTranslation } from 'react-i18next';
 import { LangCode, LangNativeName } from '../features/i18n/code';
 import { changeLanguage } from '../features/i18n/i18n';
+import { I18nScope } from '../features/i18n/token';
 
-const SettingItemSelectLanguage = withTranslation()(function SettingItemSelectLanguage({ t, i18n }: WithTranslation) {
+const SettingItemSelectLanguage = withTranslation(I18nScope.SETTINGS)(function SettingItemSelectLanguage({
+  t,
+  i18n,
+}: WithTranslation) {
   return (
     <IonItem>
       <IonIcon slot="start" icon={languageOutline} />
       <IonSelect
-        label={t('settings_language_label')}
+        label={t('language_label')}
         labelPlacement="start"
         value={i18n.language}
         onIonChange={(event) => changeLanguage(event.target.value)}
