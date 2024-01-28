@@ -1,8 +1,13 @@
 {
-  "home_hero_title": "All your needs,<br/>one app",
-  "home_inline_search_placeholder": "search",
-  "home_hubspoke_title": "WHAT DO YOU NEED?",
-  "settings_title": "Settings",
-  "settings_about_link_text": "About",
-  "settings_language_label": "Language"
+  "app": {},
+  "home": {
+    "hero_title": "All your needs,<br/>one app",
+    "inline_search_placeholder": "search",
+    "hubspoke_title": "WHAT DO YOU NEED?"
+  },
+  "settings": {
+    "title": "Settings",
+    "about_link_text": "About",
+    "language_label": "Language"
+  }
 }
