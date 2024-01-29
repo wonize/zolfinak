@@ -21,12 +21,12 @@ import {
   personOutline,
 } from 'ionicons/icons';
 import moment from 'moment';
-import { Trans, WithTranslation, withTranslation } from 'react-i18next';
+import { Trans, withTranslation, type WithTranslation } from 'react-i18next';
 import { styled } from 'styled-components';
 import { HubSpokeGrid } from '../components/HubSpokeGrid';
 import { HubSpokeItem } from '../components/HubSpokeItem';
-import './HomePage.css';
 import { I18nScope } from '../features/i18n/token';
+import './HomePage.css';
 
 const HubSpokeTitle = styled.div`
   display: flex;
@@ -51,7 +51,7 @@ const HubSpokeWrapper = styled.div`
   row-gap: 1em;
 `;
 
-const HomePage: React.FC<WithTranslation> = ({ t, i18n }) => {
+const HomePage: React.FC<WithTranslation> = ({ t }) => {
   const today = moment().format('ddd DD MMM YYYY');
   return (
     <IonPage>
