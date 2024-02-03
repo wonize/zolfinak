@@ -4,10 +4,10 @@ import DailyPage from './pages/DailyPage';
 import HomePage from './pages/HomePage';
 import SettingsPage from './pages/SettingsPage';
 
-function AppRouter() {
+function AppRouter(): JSX.Element {
   return (
     <>
-      <HomePage {...({} as any)} />
+      <HomePage />
       <Route exact path="/daily">
         <DailyPage />
       </Route>
