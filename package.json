@@ -66,7 +66,19 @@
   },
   "description": "An Ionic project",
   "eslintConfig": {
-    "extends": "@ionic/eslint-config/recommended"
+    "extends": "@ionic/eslint-config/recommended",
+    "ignorePatterns": [
+      "node_modules",
+      "*.config.ts",
+      "*.test.ts",
+      "*.d.ts",
+      "setupTests.ts",
+      "cypress/**/*.*",
+      "tests/**/*.*",
+      "test/**/*.*",
+      "**/*.jsx",
+      "**/*.js"
+    ]
   },
   "prettier": "@ionic/prettier-config",
   "husky": {
