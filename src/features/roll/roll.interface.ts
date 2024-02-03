@@ -1,14 +1,14 @@
 import type React from 'react';
 
-export type FnOut<In extends {}> =
+export type RollOut<In extends object> =
   | React.ReactElement
   | JSX.Element
   | React.ComponentType<In>
   | Iterable<React.ReactElement>;
 
-export type Fn<In extends {}, Out = FnOut<In>> = (Component: React.ComponentType<In>) => (props: In) => Out;
+export type Roll<In extends object, Out = RollOut<In>> = (Component: React.ComponentType<In>) => (props: In) => Out;
 
-export interface Rollable<In, Out> {
-  roll<T extends {}>(rolled: Fn<In & T, Out>): Rollable<In & T, Out>;
-  around<T>(Component: React.ComponentType<In & T>): React.ComponentType<In & T & Out>;
+export interface Rollable<In extends object, Out> {
+  roll<T extends object = In, P extends object = In & T>(rolled: Roll<P, Out>): Rollable<P, Out>;
+  around<T>(Component: React.ComponentType<In & T>): React.ComponentType<Out>;
 }
