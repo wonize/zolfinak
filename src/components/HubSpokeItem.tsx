@@ -58,14 +58,14 @@ const Wrapper = styled(IonLabel).attrs({ tabIndex: 1 })`
 
 interface ItemProps extends PropsWithChildren {
   href: string;
-  icon: any;
+  icon: unknown;
 }
 
-function HubSpokeItem(props: ItemProps) {
+function HubSpokeItem(props: ItemProps): JSX.Element {
   return (
     <Wrapper>
       <IconWrapper>
-        <Icon icon={props.icon} />
+        <Icon icon={props.icon as string} />
       </IconWrapper>
       <Text>{props.children}</Text>
     </Wrapper>

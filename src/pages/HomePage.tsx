@@ -42,7 +42,7 @@ const HubSpokeWrapper = styled.div`
   row-gap: 1em;
 `;
 
-const HomeToolbar = () => (
+const HomeToolbar = (): JSX.Element => (
   <IonToolbar>
     <IonButtons slot="end">
       <IonButton
@@ -109,7 +109,8 @@ const HomePage: React.FC<Props> = ({ t }) => (
 type Props = WithTranslation;
 
 export default new Roller()
-  .roll<{}>(withPage('/home'))
+  .roll(withPage('/home'))
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   .roll<WithTranslation>(withTranslation(I18nScope.HOME) as any)
-  .roll<{}>(withIonPageLayout('', { Toolbar: HomeToolbar, contentClassName: 'ion-padding' }))
+  .roll(withIonPageLayout('', { Toolbar: HomeToolbar, contentClassName: 'ion-padding' }))
   .around<Props>(HomePage);

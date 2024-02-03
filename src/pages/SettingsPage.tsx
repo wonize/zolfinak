@@ -1,9 +1,9 @@
 import { IonContent, IonHeader, IonIcon, IonItem, IonList, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import { informationCircleOutline } from 'ionicons/icons';
+import { withTranslation, type WithTranslation } from 'react-i18next';
+import { I18nScope } from '../features/i18n/token';
 import { SettingItemSelectLanguage } from './SelectLanguage';
 import './SettingsPage.css';
-import { WithTranslation, withTranslation } from 'react-i18next';
-import { I18nScope } from '../features/i18n/token';
 
 const SettingsPage: React.FC<WithTranslation> = ({ t }) => (
   <IonPage>

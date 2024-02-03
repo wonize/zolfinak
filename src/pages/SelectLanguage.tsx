@@ -1,6 +1,6 @@
 import { IonIcon, IonItem, IonSelect, IonSelectOption } from '@ionic/react';
 import { languageOutline } from 'ionicons/icons';
-import { WithTranslation, withTranslation } from 'react-i18next';
+import { withTranslation, type WithTranslation } from 'react-i18next';
 import { LangCode, LangNativeName } from '../features/i18n/code';
 import { changeLanguage } from '../features/i18n/i18n';
 import { I18nScope } from '../features/i18n/token';

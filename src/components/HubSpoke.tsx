@@ -7,7 +7,7 @@ const Image = styled(IonThumbnail)`
   --border-radius: 16px;
 `;
 
-const Grid = styled(IonGrid)`
+export const Grid = styled(IonGrid)`
   --ion-grid-width: 72%;
 
   --ion-grid-width-xs: 72%;
@@ -17,7 +17,7 @@ const Grid = styled(IonGrid)`
   --ion-grid-width-xl: 570px;
 `;
 
-export function HubSpoke() {
+export function HubSpoke(): JSX.Element {
   return (
     <IonGrid>
       <IonRow>
@@ -56,20 +56,20 @@ export function HubSpoke() {
   );
 }
 
-const Column = styled(IonCol)`
+export const Column = styled(IonCol)`
   text-align: center;
 `;
 
-function HubSpokeItem(props: any) {
+function HubSpokeItem(props: Record<string, unknown>): JSX.Element {
   return (
-    <IonRouterLink href={props.href}>
+    <IonRouterLink href={props.href as string}>
       <Image
         style={{ padding: '8px', textAlign: 'center', display: 'flex', placeItems: 'center', placeContent: 'center' }}
       >
         <IonIcon icon={settingsOutline} style={{ scale: '2' }} />
       </Image>
       <IonText className="--" color="dark" style={{ padding: '8px' }}>
-        {props.children}
+        {props.children as React.ReactNode}
       </IonText>
     </IonRouterLink>
   );

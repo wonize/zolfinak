@@ -9,7 +9,7 @@ export type I18nToken = {
     about_link_text: string;
     language_label: string;
   };
-  app: {};
+  app: object;
 };
 
 /** i18next namespaces(ns) */

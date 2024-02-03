@@ -9,3 +9,5 @@ const SlideWrapper = styled.div`
   place-content: stretch;
   place-items: stretch;
 `;
+
+export { SlideWrapper };

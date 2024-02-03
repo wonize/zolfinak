@@ -17,13 +17,13 @@ import React from 'react';
  *   </IonContent>
  * </IonPage>
  */
-export function withIonPageLayout<P extends {}>(
+export function withIonPageLayout<P extends object = object>(
   title: string,
   option: IonPageLayoutOption = DEFAULT_ION_PAGE_LAYOUT_OPTION,
-) {
+): (Component: React.ComponentType<P>) => (props: P) => JSX.Element {
   const opt = Object.assign({}, DEFAULT_ION_PAGE_LAYOUT_OPTION, option);
-  return function HigherOrderComponent(Component: React.ComponentType<P>) {
-    return function InnerComponent(props: P) {
+  return function HigherOrderComponent(Component: React.ComponentType<P>): (props: P) => JSX.Element {
+    return function EnhancedComponent(props: P): JSX.Element {
       return React.createElement(
         IonPage,
         {},
@@ -31,7 +31,7 @@ export function withIonPageLayout<P extends {}>(
           ? React.createElement(
               IonHeader,
               {},
-              Boolean(opt?.Toolbar)
+              Boolean(opt?.Toolbar) === true
                 ? React.createElement(opt.Toolbar!, {})
                 : React.createElement(IonToolbar, {}, React.createElement(IonTitle, {}, title)),
             )

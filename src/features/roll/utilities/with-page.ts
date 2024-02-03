@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 export function withPage(path: string, option: WithPageOption = DEFAULT_WITH_PAGE_OPTION) {
   return function HigherOrderComponent<P>(component: React.ComponentType<P>) {
-    return function InnerComponent(props: P) {
+    return function EnhancedComponent(props: P): JSX.Element {
       return React.createElement(Route, Object.assign({}, { path, component }, option, props));
     };
   };

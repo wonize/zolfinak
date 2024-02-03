@@ -24,7 +24,7 @@ export function changeLanguage(lng: LangCode): void {
   i18n.changeLanguage(lng);
 }
 
-export function I18nextProvider(props: PropsWithChildren) {
+export function I18nextProvider(props: PropsWithChildren): JSX.Element {
   return createElement(RealI18nextProvider, { i18n }, props.children);
 }
 

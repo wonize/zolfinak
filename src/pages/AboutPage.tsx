@@ -1,6 +1,6 @@
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
 
-export function AboutPage() {
+export function AboutPage(): JSX.Element {
   return (
     <IonPage>
       <IonHeader>
