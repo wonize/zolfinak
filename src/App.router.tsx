@@ -7,9 +7,7 @@ import SettingsPage from './pages/SettingsPage';
 function AppRouter() {
   return (
     <>
-      <Route exact path="/home">
-        <HomePage />
-      </Route>
+      <HomePage {...({} as any)} />
       <Route exact path="/daily">
         <DailyPage />
       </Route>

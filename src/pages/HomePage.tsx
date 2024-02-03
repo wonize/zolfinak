@@ -1,15 +1,4 @@
-import {
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonLabel,
-  IonPage,
-  IonSearchbar,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/react';
+import { IonButton, IonButtons, IonHeader, IonIcon, IonLabel, IonSearchbar, IonTitle, IonToolbar } from '@ionic/react';
 import {
   archiveOutline,
   basketOutline,
@@ -26,6 +15,8 @@ import { styled } from 'styled-components';
 import { HubSpokeGrid } from '../components/HubSpokeGrid';
 import { HubSpokeItem } from '../components/HubSpokeItem';
 import { I18nScope } from '../features/i18n/token';
+import { withIonPageLayout, withPage } from '../features/roll/mod';
+import { Roller } from '../features/roll/roll.implementor';
 import './HomePage.css';
 
 const HubSpokeTitle = styled.div`
@@ -51,72 +42,74 @@ const HubSpokeWrapper = styled.div`
   row-gap: 1em;
 `;
 
-const HomePage: React.FC<WithTranslation> = ({ t }) => {
-  const today = moment().format('ddd DD MMM YYYY');
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="end">
-            <IonButton
-              style={{
-                backgroundColor: 'white',
-                borderRadius: '4pt',
-                width: '2em',
-                height: '2em',
-                margin: '1em 1em',
-              }}
-              color="light"
-            >
-              <IonIcon size="small" icon={personOutline} />
-            </IonButton>
-          </IonButtons>
-          <IonTitle>{today}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen className="ion-padding">
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">
-              <Trans i18nKey={'hero_title'} t={t} />
-            </IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonSearchbar placeholder={t('inline_search_placeholder')} />
-        <HubSpokeWrapper>
-          <HubSpokeTitle>
-            <IonLabel>{t('hubspoke_title')}</IonLabel>
-            <IonIcon icon={ellipsisHorizontalOutline} />
-          </HubSpokeTitle>
-          <HubSpokeGrid>
-            <HubSpokeItem href="/settings" icon={magnetOutline}>
-              Surprise me!
-            </HubSpokeItem>
+const HomeToolbar = () => (
+  <IonToolbar>
+    <IonButtons slot="end">
+      <IonButton
+        style={{
+          backgroundColor: 'white',
+          borderRadius: '4pt',
+          width: '2em',
+          height: '2em',
+          margin: '1em 1em',
+        }}
+        color="light"
+      >
+        <IonIcon size="small" icon={personOutline} />
+      </IonButton>
+    </IonButtons>
+    <IonTitle>{moment().format('ddd DD MMM YYYY')}</IonTitle>
+  </IonToolbar>
+);
 
-            <HubSpokeItem href="/settings" icon={basketOutline}>
-              Groceries
-            </HubSpokeItem>
+const HomePage: React.FC<Props> = ({ t }) => (
+  <>
+    <IonHeader collapse="condense">
+      <IonToolbar>
+        <IonTitle size="large">
+          <Trans i18nKey={'hero_title'} t={t} />
+        </IonTitle>
+      </IonToolbar>
+    </IonHeader>
+    <IonSearchbar placeholder={t('inline_search_placeholder')} />
+    <HubSpokeWrapper>
+      <HubSpokeTitle>
+        <IonLabel>{t('hubspoke_title')}</IonLabel>
+        <IonIcon icon={ellipsisHorizontalOutline} />
+      </HubSpokeTitle>
+      <HubSpokeGrid>
+        <HubSpokeItem href="/settings" icon={magnetOutline}>
+          Surprise me!
+        </HubSpokeItem>
 
-            <HubSpokeItem href="/settings" icon={fishOutline}>
-              Meat & Fish
-            </HubSpokeItem>
+        <HubSpokeItem href="/settings" icon={basketOutline}>
+          Groceries
+        </HubSpokeItem>
 
-            <HubSpokeItem href="/settings" icon={beerOutline}>
-              Fruits & Vegetables
-            </HubSpokeItem>
+        <HubSpokeItem href="/settings" icon={fishOutline}>
+          Meat & Fish
+        </HubSpokeItem>
 
-            <HubSpokeItem href="/settings" icon={medkitOutline}>
-              Health & Medicines
-            </HubSpokeItem>
+        <HubSpokeItem href="/settings" icon={beerOutline}>
+          Fruits & Vegetables
+        </HubSpokeItem>
 
-            <HubSpokeItem href="/settings" icon={archiveOutline}>
-              Send Packages
-            </HubSpokeItem>
-          </HubSpokeGrid>
-        </HubSpokeWrapper>
-      </IonContent>
-    </IonPage>
-  );
-};
+        <HubSpokeItem href="/settings" icon={medkitOutline}>
+          Health & Medicines
+        </HubSpokeItem>
 
-export default withTranslation(I18nScope.HOME)(HomePage);
+        <HubSpokeItem href="/settings" icon={archiveOutline}>
+          Send Packages
+        </HubSpokeItem>
+      </HubSpokeGrid>
+    </HubSpokeWrapper>
+  </>
+);
+
+type Props = WithTranslation;
+
+export default new Roller()
+  .roll<{}>(withPage('/home'))
+  .roll<WithTranslation>(withTranslation(I18nScope.HOME) as any)
+  .roll<{}>(withIonPageLayout('', { Toolbar: HomeToolbar, contentClassName: 'ion-padding' }))
+  .around<Props>(HomePage);
