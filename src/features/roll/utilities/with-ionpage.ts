@@ -26,15 +26,18 @@ export function withIonPageLayout<P extends {}>(
       return React.createElement(
         IonPage,
         {},
-        React.createElement(
-          IonHeader,
-          {},
-          React.createElement(IonToolbar, {}),
-          React.createElement(IonTitle, {}, title),
-        ),
+        option?.withToolbar === true
+          ? React.createElement(
+              IonHeader,
+              {},
+              Boolean(option?.Toolbar)
+                ? React.createElement(option.Toolbar!, {})
+                : React.createElement(IonToolbar, {}, React.createElement(IonTitle, {}, title)),
+            )
+          : null,
         React.createElement(
           IonContent,
-          { fullscreen: option.fullscreen, className: option.contentClassName },
+          { fullscreen: option?.fullscreen, className: option?.contentClassName },
           React.createElement(Component, { ...props }),
         ),
       );
@@ -48,7 +51,8 @@ export const DEFAULT_ION_PAGE_LAYOUT_OPTION: IonPageLayoutOption = {
 };
 
 export interface IonPageLayoutOption {
-  fullscreen: boolean;
+  fullscreen?: boolean;
   contentClassName?: string;
   withToolbar?: boolean;
+  Toolbar?: React.ComponentType;
 }
