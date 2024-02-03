@@ -21,23 +21,24 @@ export function withIonPageLayout<P extends {}>(
   title: string,
   option: IonPageLayoutOption = DEFAULT_ION_PAGE_LAYOUT_OPTION,
 ) {
+  const opt = Object.assign({}, DEFAULT_ION_PAGE_LAYOUT_OPTION, option);
   return function HigherOrderComponent(Component: React.ComponentType<P>) {
     return function InnerComponent(props: P) {
       return React.createElement(
         IonPage,
         {},
-        option?.withToolbar === true
+        opt?.withToolbar === true
           ? React.createElement(
               IonHeader,
               {},
-              Boolean(option?.Toolbar)
-                ? React.createElement(option.Toolbar!, {})
+              Boolean(opt?.Toolbar)
+                ? React.createElement(opt.Toolbar!, {})
                 : React.createElement(IonToolbar, {}, React.createElement(IonTitle, {}, title)),
             )
           : null,
         React.createElement(
           IonContent,
-          { fullscreen: option?.fullscreen, className: option?.contentClassName },
+          { fullscreen: opt?.fullscreen, className: opt?.contentClassName },
           React.createElement(Component, { ...props }),
         ),
       );
