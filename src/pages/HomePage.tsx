@@ -10,13 +10,14 @@ import {
   personOutline,
 } from 'ionicons/icons';
 import moment from 'moment';
-import { Trans, withTranslation, type WithTranslation } from 'react-i18next';
+import { Trans, type WithTranslation } from 'react-i18next';
 import { styled } from 'styled-components';
 import { HubSpokeGrid } from '../components/HubSpokeGrid';
 import { HubSpokeItem } from '../components/HubSpokeItem';
 import { I18nScope } from '../features/i18n/token';
 import { withIonPageLayout, withPage } from '../features/roll/mod';
 import { Roller } from '../features/roll/roll.implementor';
+import { withTranslation } from '../features/roll/utilities/with-trans';
 import './HomePage.css';
 
 const HubSpokeTitle = styled.div`
@@ -110,7 +111,6 @@ type Props = WithTranslation;
 
 export default new Roller()
   .roll(withPage('/home'))
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  .roll<WithTranslation>(withTranslation(I18nScope.HOME) as any)
+  .roll<WithTranslation>(withTranslation(I18nScope.HOME))
   .roll(withIonPageLayout('', { Toolbar: HomeToolbar, contentClassName: 'ion-padding' }))
   .around<Props>(HomePage);
