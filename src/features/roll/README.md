@@ -142,3 +142,36 @@ import { withProvider } from 'roll/utilities/mod';
 ```typescript
 Provider: React.Provider;
 ```
+
+## BOILERPLATES
+
+**Accept Option**
+
+```typescript
+import React from 'react';
+import type { HighComponent } from '../roll.interface';
+
+export function withName<P extends object>(option: WithNameOption): HighComponent<P> {
+  return function HigherOrderComponent(component: React.ComponentType<P>){
+    return function EnhancedComponent(props: P): JSX.Element {
+      return(/* JSX stuff */)
+    }
+  }
+}
+
+export interface WithNameOption {}
+
+export const DEFAULT_WITH_NAME_OPTION: Readonly<WithNameOption> = {}
+```
+
+**UnAccept Option**
+
+```typescript
+import React from 'react';
+
+export function withName<P extends object>(component: React.ComponentType<P>) {
+  return function EnhancedComponent(props: P): JSX.Element {
+    return(/* JSX stuff */)
+  };
+}
+```
