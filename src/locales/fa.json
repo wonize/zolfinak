@@ -1,0 +1,13 @@
+{
+  "app": {},
+  "home": {
+    "hero_title": "هر چی که بخواهی,<br/>تو دستاته",
+    "inline_search_placeholder": "جستجو",
+    "hubspoke_title": "دنبال چی می‌گردی؟"
+  },
+  "settings": {
+    "title": "تنظیمات",
+    "about_link_text": "درباره ما",
+    "language_label": "زبان‌ها"
+  }
+}
