@@ -13,6 +13,7 @@
     "fmt": "npm run eslint -- --fix && npm run prettier -- --write",
     "prettier": "prettier \"**/*.{ts,tsx}\"",
     "eslint": "eslint . --ext .ts,.tsx",
+    "sync": "ionic capacitor sync",
     "android": "ionic capacitor run android",
     "android:list": "npm run android -- --list",
     "android:external": "npm run android -- --external"
