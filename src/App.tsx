@@ -1,8 +1,10 @@
+import React from 'react';
 import { IonApp, IonIcon, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { albumsOutline, appsOutline, settingsOutline } from 'ionicons/icons';
 import { AppRouter } from './App.router';
 import { I18nextProvider } from './features/i18n/mod';
+import styled from 'styled-components';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,32 +24,51 @@ import '@ionic/react/css/text-transformation.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { DirctionStore } from './pages/dirction-state';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <I18nextProvider>
-      <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            <AppRouter />
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="home" href="/home">
-              <IonIcon aria-hidden="true" icon={appsOutline} />
-            </IonTabButton>
-            <IonTabButton tab="daily" href="/daily">
-              <IonIcon aria-hidden="true" icon={albumsOutline} />
-            </IonTabButton>
-            <IonTabButton tab="settings" href="/settings">
-              <IonIcon aria-hidden="true" icon={settingsOutline} />
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-    </I18nextProvider>
-  </IonApp>
-);
+export enum Direction {
+  ltr = 'ltr',
+  rtl = 'rtl'
+}
+
+type WrapperProps = {
+  direction: Direction | `${Direction}`;
+};
+
+const Wrapper = styled('div')<WrapperProps>(({ direction }) => ({
+  direction: direction
+}));
+
+const App: React.FC = () => {
+const DirctionState : Direction | `${Direction}` | string | any = DirctionStore.useState(s => s.dirction)
+  return (
+    <IonApp>
+      <Wrapper direction={DirctionState}>
+        <I18nextProvider>
+          <IonReactRouter>
+            <IonTabs>
+              <IonRouterOutlet>
+                <AppRouter />
+              </IonRouterOutlet>
+              <IonTabBar slot="bottom">
+                <IonTabButton tab="home" href="/home">
+                  <IonIcon aria-hidden="true" icon={appsOutline} />
+                </IonTabButton>
+                <IonTabButton tab="daily" href="/daily">
+                  <IonIcon aria-hidden="true" icon={albumsOutline} />
+                </IonTabButton>
+                <IonTabButton tab="settings" href="/settings">
+                  <IonIcon aria-hidden="true" icon={settingsOutline} />
+                </IonTabButton>
+              </IonTabBar>
+            </IonTabs>
+          </IonReactRouter>
+        </I18nextProvider>
+      </Wrapper>
+    </IonApp>
+  );
+}
 
 export default App;
