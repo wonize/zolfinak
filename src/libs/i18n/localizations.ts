@@ -12,12 +12,12 @@ import { LanguageName, type LanguageNameKey } from './languages';
 import type { I18nToken } from './token';
 
 export const LocaleMap: LocaleMap = {
-  [LanguageName.ARABIC.value]: AR,
-  [LanguageName.ENGLISH.value]: EN,
-  [LanguageName.PERSIAN.value]: FA,
-  [LanguageName.RUSSIAN.value]: RU,
-  [LanguageName.TURKISH.value]: TR,
-  [LanguageName.CHINESE.value]: ZH,
+  [LanguageName.ARABIC.valueOf()]: AR,
+  [LanguageName.ENGLISH.valueOf()]: EN,
+  [LanguageName.PERSIAN.valueOf()]: FA,
+  [LanguageName.RUSSIAN.valueOf()]: RU,
+  [LanguageName.TURKISH.valueOf()]: TR,
+  [LanguageName.CHINESE.valueOf()]: ZH,
 } as const;
 
 export type LocaleMap = Readonly<Record<Exclude<LanguageNameKey, 'FARSI'>, I18nToken>>;

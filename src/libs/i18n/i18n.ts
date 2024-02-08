@@ -15,9 +15,9 @@ i18n.use(initReactI18next).init({
   resources,
   ns: I18nNSList,
   defaultNS: DEFAULT_I18N_NAMESPACE,
-  lng: DEFAULT_LANG_NAME.toIsoCode(),
-  fallbackLng: DEFAULT_LANG_NAME.toIsoCode(),
-  supportedLngs: [LanguageName.ENGLISH.toIsoCode(), LanguageName.PERSIAN.toIsoCode()],
+  lng: DEFAULT_LANG_NAME.valueOf(),
+  fallbackLng: DEFAULT_LANG_NAME.valueOf(),
+  supportedLngs: [LanguageName.ENGLISH.valueOf(), LanguageName.PERSIAN.valueOf()],
 });
 
 export function I18nextProvider(props: PropsWithChildren): JSX.Element {
