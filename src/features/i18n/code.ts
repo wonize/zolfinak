@@ -26,6 +26,15 @@ export const LangCode = {
   [LangName.TURKISH]: 'tr',
 } as const;
 
+export const DirctionCode: { [key: string]: string } = {
+  ar: 'rtl',
+  fa: 'rtl',
+  ru: 'rtl',
+  tr: 'rtl',
+  en: 'ltr',
+  zh: 'ltr',
+};
+
 export type LangObject = Readonly<Record<LangName, string>>;
 export type LangName = Readonly<(typeof LangName)[keyof typeof LangName]>;
 export type LangCode = (typeof LangCode)[LangName];
