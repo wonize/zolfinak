@@ -1,9 +1,8 @@
 import { IonContent, IonHeader, IonIcon, IonItem, IonList, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import { informationCircleOutline } from 'ionicons/icons';
 import { withTranslation, type WithTranslation } from 'react-i18next';
-import { I18nScope } from '../features/i18n/token';
-import { SettingItemSelectLanguage } from './SelectLanguage';
-import './SettingsPage.css';
+import { I18nScope } from '../libs/i18n/mod';
+import { SettingsLanguageSelection } from '../libs/settings/mod';
 
 const SettingsPage: React.FC<WithTranslation> = ({ t }) => (
   <IonPage>
@@ -19,7 +18,7 @@ const SettingsPage: React.FC<WithTranslation> = ({ t }) => (
         </IonToolbar>
       </IonHeader>
       <IonList>
-        <SettingItemSelectLanguage />
+        <SettingsLanguageSelection />
         <IonItem routerLink="/settings/about">
           <IonIcon slot="start" icon={informationCircleOutline} />
           <IonText>{t('about_link_text')}</IonText>
