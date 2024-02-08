@@ -23,14 +23,14 @@ export async function initLangCode(): Promise<void> {
 export async function getLastLang(): Promise<LanguageName> {
   const stored_lang = await Preferences.get({ key: LANG_STORAGE_KEY });
   const lang = stored_lang.value ?? DEFAULT_LANG_NAME;
-  return LanguageName.get(lang.valueOf());
+  return LanguageName.from(lang.valueOf());
 }
 
 // TODO: getSysLang
 /// export async function getSystemLang(): Promise<LangCode>{}
 
 export function changeLanguage(lang: string | LanguageName): void {
-  const lang_instance = LanguageName.get(lang.valueOf());
+  const lang_instance = LanguageName.from(lang.valueOf());
   const lang_value = lang_instance.valueOf();
   Preferences.set({ key: LANG_STORAGE_KEY, value: lang_value })
     .then(function () {
