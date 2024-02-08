@@ -14,11 +14,8 @@ import { Trans, type WithTranslation } from 'react-i18next';
 import { styled } from 'styled-components';
 import { HubSpokeGrid } from '../components/HubSpokeGrid';
 import { HubSpokeItem } from '../components/HubSpokeItem';
-import { I18nScope } from '../features/i18n/token';
-import { withIonPageLayout, withPage } from '../features/roll/mod';
-import { Roller } from '../features/roll/roll.implementor';
-import { withTranslation } from '../features/roll/utilities/with-trans';
-import './HomePage.css';
+import { I18nScope } from '../libs/i18n/mod';
+import { Roller, withIonPageLayout, withPage, withTranslation } from '../libs/roll/mod';
 
 const HubSpokeTitle = styled.div`
   display: flex;
