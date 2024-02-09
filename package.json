@@ -34,6 +34,7 @@
     "i18next": "^23.8.2",
     "ionicons": "^7.2.2",
     "moment": "^2.30.1",
+    "native-run": "^2.0.1",
     "pullstate": "^1.25.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
