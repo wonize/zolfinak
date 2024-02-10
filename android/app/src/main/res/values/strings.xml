@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">saloni</string>
-    <string name="title_activity_main">saloni</string>
-    <string name="package_name">io.ionic.saloni</string>
-    <string name="custom_url_scheme">io.ionic.saloni</string>
+    <string name="app_name">Zolfinak</string>
+    <string name="title_activity_main">Zolfinak</string>
+    <string name="package_name">com.zolfinak.app</string>
+    <string name="custom_url_scheme">com.zolfinak.app</string>
 </resources>

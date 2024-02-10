@@ -1,9 +1,9 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.saloni',
-  appName: 'saloni',
-  webDir: 'dist',
+  appId: 'com.zolfinak.app',
+  appName: 'Zolfinak',
+  webDir: 'www',
   server: {
     androidScheme: 'https',
   },
