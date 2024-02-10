@@ -8,6 +8,7 @@
   "settings": {
     "title": "تنظیمات",
     "about_link_text": "درباره ما",
-    "language_label": "زبان‌ها"
+    "language_label": "زبان‌ها",
+    "change_language_toast": "زبان به {{lang}} تغییر یافت."
   }
 }

@@ -8,6 +8,7 @@
   "settings": {
     "title": "Settings",
     "about_link_text": "About",
-    "language_label": "Language"
+    "language_label": "Language",
+    "change_language_toast": "Setup {{lang}} language."
   }
 }

@@ -8,6 +8,7 @@ export type I18nToken = {
     title: string;
     about_link_text: string;
     language_label: string;
+    change_language_toast: string;
   };
   app: object;
 };
