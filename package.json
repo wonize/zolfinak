@@ -13,10 +13,9 @@
     "fmt": "npm run eslint -- --fix && npm run prettier -- --write",
     "prettier": "prettier \"**/*.{ts,tsx}\"",
     "eslint": "eslint . --ext .ts,.tsx",
-    "sync": "ionic capacitor sync",
-    "android": "ionic capacitor run android",
-    "android:list": "npm run android -- --list",
-    "android:external": "npm run android -- --external"
+    "android.list": "ionic capacitor run android --list",
+    "android.prestart": "ionic build && ionic capacitor sync && ionic capacitor copy",
+    "android.start": "npm run android.prestart && npx cap run android --target=$ANDROID_TARGET_ID --external"
   },
   "dependencies": {
     "@capacitor/android": "^5.7.0",
