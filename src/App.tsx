@@ -31,7 +31,7 @@ const App: React.FC = () => {
             <IonRouterOutlet>
               <AppRouter />
             </IonRouterOutlet>
-            <IonTabBar slot="bottom">
+            <IonTabBar slot="bottom" dir="ltr">
               <IonTabButton tab="home" href="/home">
                 <IonIcon aria-hidden="true" icon={appsOutline} />
               </IonTabButton>
