@@ -1,4 +1,11 @@
 {
+  "_info_": {
+    "english_name": "English",
+    "native_name": "English",
+    "text_direction": "LTR",
+    "iso_639_1": "EN",
+    "iso_639_2": "ENG"
+  },
   "app": {},
   "home": {
     "hero_title": "All your needs,<br/>one app",
