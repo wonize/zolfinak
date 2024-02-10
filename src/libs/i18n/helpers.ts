@@ -2,15 +2,16 @@ import { Device } from '@capacitor/device';
 import { Preferences } from '@capacitor/preferences';
 import { Toast } from '@capacitor/toast';
 import { i18n } from './i18n';
-import { DEFAULT_LANG_NAME, LanguageName } from './languages';
+import { DEFAULT_LANG_NAME, resolveLanguageName, type LanguageName } from './languages';
 import { I18nScope } from './token';
 
-export const LANG_STORAGE_KEY = 'lng';
+export const LANGUAGE_STORAGE_KEY = 'z-language';
 
-export async function initLangCode(): Promise<void> {
+export async function initializeLanguageSettings(): Promise<void> {
   const last_lang = await getLastLang();
-  if (typeof last_lang !== 'undefined') {
-    return changeLanguage(last_lang);
+  if (last_lang) {
+    changeLanguageSilent(last_lang);
+    return;
   }
 
   const sys_lang = await getSystemLang();
@@ -23,7 +24,11 @@ export async function initLangCode(): Promise<void> {
 
 export async function getSystemLang(): Promise<string | void> {
   if (typeof navigator !== 'undefined') {
-    return (navigator.language ?? navigator.languages?.[0]).valueOf();
+    return (
+      navigator['language'] ??
+      navigator['languages'][0] ??
+      navigator['userLangauge' as keyof Navigator]
+    )?.valueOf();
   }
 
   const iso_code = await Device.getLanguageCode();
@@ -37,29 +42,51 @@ export async function getSystemLang(): Promise<string | void> {
   }
 }
 
-export async function getLastLang(): Promise<LanguageName | void> {
-  const lang = await Preferences.get({ key: LANG_STORAGE_KEY });
-  if (lang.value == undefined) return;
-  return LanguageName.from(lang.value);
+export async function getLastLang(): Promise<string | null> {
+  const lang = await Preferences.get({ key: LANGUAGE_STORAGE_KEY });
+  return lang.value;
 }
 
-export async function changeLanguage(lang: string | LanguageName): Promise<void> {
-  const lang_instance = LanguageName.from(lang.valueOf());
-  const lang_value = lang_instance.valueOf();
-  await Preferences.set({ key: LANG_STORAGE_KEY, value: lang_value });
-  await i18n.changeLanguage(lang_value);
-  await updateTextDirection(lang_instance);
+export async function changeLanguageSilent(langtag: string | LanguageName): Promise<LanguageName> {
+  const lang = resolveLanguageName(langtag.valueOf());
+  await Preferences.set({ key: LANGUAGE_STORAGE_KEY, value: lang });
+  await i18n.changeLanguage(lang);
+  await updateTextDirection(lang);
+  return lang;
+}
+
+export async function changeLanguage(langtag: string | LanguageName): Promise<void> {
+  const lang = await changeLanguageSilent(langtag);
   await Toast.show({
     position: 'bottom',
     duration: 'short',
     text: i18n.t('change_language_toast', {
-      ns:I18nScope.SETTINGS
+      lang: getNativeName(lang),
+      ns: I18nScope.SETTINGS,
     }),
   });
 }
 
+export function getLocaleInfo(lang: LanguageName) {
+  const option = { ns: I18nScope._INFO_, lng: lang };
+  const name = i18n.t('english_name', option);
+  const nativeName = i18n.t('native_name', option);
+  const textDirection = i18n.t('text_direction', option);
+  const ISO_639_1 = i18n.t('iso_639_1', option);
+  const ISO_639_2 = i18n.t('iso_639_2', option);
+  return { name, nativeName, textDirection, ISO_639_1, ISO_639_2 } as const;
+}
+
+export function getNativeName(lang: LanguageName) {
+  return i18n.t('native_name', { ns: I18nScope._INFO_, lng: lang });
+}
+
+export function getTextDirection(lang: LanguageName) {
+  return i18n.t('text_direction', { ns: I18nScope._INFO_, lng: lang });
+}
+
 export async function updateTextDirection(lang: LanguageName): Promise<void> {
-  const dir = lang.textDirection;
+  const dir = getTextDirection(lang);
   if (typeof document !== 'undefined') {
     document.body.setAttribute('dir', dir);
     document.body.setAttribute('data-dir', dir);

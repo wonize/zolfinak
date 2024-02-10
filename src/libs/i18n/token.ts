@@ -10,14 +10,24 @@ export type I18nToken = {
     language_label: string;
     change_language_toast: string;
   };
+  _info_: I18nLocaleInfo;
   app: object;
 };
+
+export interface I18nLocaleInfo {
+  english_name: string;
+  native_name: string;
+  iso_639_1: string;
+  iso_639_2: string;
+  text_direction: 'LTR' | 'RTL';
+}
 
 /** i18next namespaces(ns) */
 export const I18nScope: I18nScope = {
   HOME: 'home',
   SETTINGS: 'settings',
   APP: 'app',
+  _INFO_: '_info_',
 } as const;
 
 export type I18nScope = Readonly<{
