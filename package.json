@@ -22,10 +22,13 @@
     "@capacitor/android": "^5.7.0",
     "@capacitor/app": "5.0.6",
     "@capacitor/core": "^5.7.0",
+    "@capacitor/device": "^5.0.7",
     "@capacitor/haptics": "5.0.6",
     "@capacitor/keyboard": "5.0.7",
     "@capacitor/preferences": "^5.0.7",
     "@capacitor/status-bar": "5.0.6",
+    "@capacitor/toast": "^5.0.7",
+    "@ionic/pwa-elements": "^3.2.2",
     "@ionic/react": "^7.7.0",
     "@ionic/react-router": "^7.7.0",
     "@ionic/storage": "^4.0.0",
@@ -45,6 +48,7 @@
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.4",
     "@capacitor/cli": "5.6.0",
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/prettier-config": "^4.0.0",
