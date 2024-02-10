@@ -16,10 +16,6 @@ function LanguageSelection({ t, i18n }: WithTranslation): JSX.Element {
       >
         <SelectOption lang={LanguageName.ENGLISH} />
         <SelectOption lang={LanguageName.PERSIAN} />
-        <SelectOption lang={LanguageName.TURKISH} />
-        <SelectOption lang={LanguageName.RUSSIAN} />
-        <SelectOption lang={LanguageName.CHINESE} />
-        <SelectOption lang={LanguageName.ARABIC} />
       </IonSelect>
     </IonItem>
   );

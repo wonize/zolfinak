@@ -7,7 +7,7 @@ import { DEFAULT_I18N_NAMESPACE, I18nNSList } from './token';
 
 declare module 'i18next' {
   interface CustomTypeOptions {
-    resrources: LocaleMap;
+    resrources: typeof LocaleMap;
   }
 }
 
@@ -15,9 +15,9 @@ i18n.use(initReactI18next).init({
   resources,
   ns: I18nNSList,
   defaultNS: DEFAULT_I18N_NAMESPACE,
-  lng: DEFAULT_LANG_NAME.valueOf(),
-  fallbackLng: DEFAULT_LANG_NAME.valueOf(),
-  supportedLngs: [LanguageName.ENGLISH.valueOf(), LanguageName.PERSIAN.valueOf()],
+  lng: DEFAULT_LANG_NAME,
+  fallbackLng: DEFAULT_LANG_NAME,
+  supportedLngs: [LanguageName.ENGLISH, LanguageName.PERSIAN],
 });
 
 export function I18nextProvider(props: PropsWithChildren): JSX.Element {

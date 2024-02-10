@@ -1,4 +1,11 @@
 {
+  "_info_": {
+    "english_name": "Persian",
+    "native_name": "فارسی",
+    "text_direction": "RTL",
+    "iso_639_1": "FA",
+    "iso_639_2": "PER"
+  },
   "app": {},
   "home": {
     "hero_title": "هر چی که بخواهی,<br/>تو دستاته",
@@ -8,6 +15,7 @@
   "settings": {
     "title": "تنظیمات",
     "about_link_text": "درباره ما",
-    "language_label": "زبان‌ها"
+    "language_label": "زبان‌ها",
+    "change_language_toast": "زبان به {{lang}} تغییر یافت."
   }
 }

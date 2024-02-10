@@ -1,23 +1,9 @@
-// locales
-import AR from '../../locales/ar.json';
-import EN from '../../locales/en.json';
-import FA from '../../locales/fa.json';
-import RU from '../../locales/ru.json';
-import TR from '../../locales/tr.json';
-import ZH from '../../locales/zh.json';
-//
-// locales end
-//
-import { LanguageName, type LanguageNameKey } from './languages';
+import ENGLISH from '../../locales/ENGLISH.json';
+import PERSIAN from '../../locales/PERSIAN.json';
+import { LanguageName } from './languages';
 import type { I18nToken } from './token';
 
-export const LocaleMap: LocaleMap = {
-  [LanguageName.ARABIC.valueOf()]: AR,
-  [LanguageName.ENGLISH.valueOf()]: EN,
-  [LanguageName.PERSIAN.valueOf()]: FA,
-  [LanguageName.RUSSIAN.valueOf()]: RU,
-  [LanguageName.TURKISH.valueOf()]: TR,
-  [LanguageName.CHINESE.valueOf()]: ZH,
+export const LocaleMap: { readonly [K in LanguageName]: I18nToken } = {
+  [LanguageName.ENGLISH]: ENGLISH as I18nToken,
+  [LanguageName.PERSIAN]: PERSIAN as I18nToken,
 } as const;
-
-export type LocaleMap = Readonly<Record<Exclude<LanguageNameKey, 'FARSI'>, I18nToken>>;
