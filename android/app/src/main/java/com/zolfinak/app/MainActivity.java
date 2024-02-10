@@ -1,4 +1,4 @@
-package io.ionic.saloni;
+package com.zolfinak.app;
 
 import com.getcapacitor.BridgeActivity;
 
