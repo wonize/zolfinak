@@ -3,7 +3,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { albumsOutline, appsOutline, settingsOutline } from 'ionicons/icons';
 import React from 'react';
 import { AppRouter } from './App.router';
-import { I18nextProvider } from './libs/i18n/mod';
+import { I18nextProvider, initializeLanguageSettings } from './libs/i18n/mod';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 /* Basic CSS for apps built with Ionic */
@@ -21,6 +21,7 @@ import '@ionic/react/css/text-transformation.css';
 import './theme/variables.css';
 
 setupIonicReact();
+initializeLanguageSettings();
 
 const App: React.FC = () => {
   return (
