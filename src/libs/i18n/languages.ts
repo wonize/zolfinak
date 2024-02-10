@@ -1,7 +1,4 @@
-export const enum TextDirection {
-  RTL = 'rtl',
-  LTR = 'ltr',
-}
+import * as textDirection from 'rtl-detect';
 
 export class LanguageName<T extends string = LanguageNameKey> {
   private static langs: Record<string, LanguageNameKey> = {};
@@ -12,17 +9,23 @@ export class LanguageName<T extends string = LanguageNameKey> {
     return LanguageName[LanguageName.findKey(target)];
   }
 
-  public constructor(
-    public readonly name: T,
-    public readonly nativeName: string,
-    protected readonly code: string,
-    public readonly textDirection: TextDirection = TextDirection.LTR,
-  ) {
+  public readonly name: T;
+  public readonly nativeName: string;
+  public constructor(public readonly code: string) {
+    const option: Intl.DisplayNamesOptions = { type: 'language', languageDisplay: 'standard', style: 'long' };
+    const intl_name = new Intl.DisplayNames(['en'], option);
+    const intl_native_name = new Intl.DisplayNames([code], option);
+    this.name = intl_name.of(code)!.toUpperCase()! as T;
+    this.nativeName = intl_native_name.of(code)!;
+
     LanguageName.langs = Object.assign({}, LanguageName.langs, {
-      [name]: name,
-      [nativeName]: name,
-      [code]: name,
+      [this.name]: this.name,
+      [this.nativeName]: this.name,
+      [code]: this.name,
     });
+  }
+  public get textDirection() {
+    return textDirection.getLangDir(this.code);
   }
   public readonly toString = (): string => {
     return this.name.toString();
@@ -31,13 +34,13 @@ export class LanguageName<T extends string = LanguageNameKey> {
     return this.name.valueOf() as T;
   };
 
-  public static readonly ARABIC = new LanguageName<'ARABIC'>('ARABIC', 'العربية', 'ar', TextDirection.RTL);
-  public static readonly CHINESE = new LanguageName<'CHINESE'>('CHINESE', '中文（简体字）', 'zh');
-  public static readonly ENGLISH = new LanguageName<'ENGLISH'>('ENGLISH', 'English', 'en');
-  public static readonly PERSIAN = new LanguageName<'PERSIAN'>('PERSIAN', 'پارسی', 'fa', TextDirection.RTL);
+  public static readonly ARABIC = new LanguageName<'ARABIC'>('ar');
+  public static readonly CHINESE = new LanguageName<'CHINESE'>('zh');
+  public static readonly ENGLISH = new LanguageName<'ENGLISH'>('en');
+  public static readonly PERSIAN = new LanguageName<'PERSIAN'>('fa');
   public static readonly FARSI = LanguageName.PERSIAN;
-  public static readonly RUSSIAN = new LanguageName<'RUSSIAN'>('RUSSIAN', 'Русский', 'ru');
-  public static readonly TURKISH = new LanguageName<'TURKISH'>('TURKISH', 'Türkçe', 'tr');
+  public static readonly RUSSIAN = new LanguageName<'RUSSIAN'>('ru');
+  public static readonly TURKISH = new LanguageName<'TURKISH'>('tr');
 }
 
 export type LanguageNameKey = Exclude<keyof typeof LanguageName, 'prototype' | 'findKey' | 'find' | 'get' | 'from'>;
