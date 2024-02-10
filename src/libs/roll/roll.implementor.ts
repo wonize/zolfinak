@@ -17,7 +17,7 @@ export class Roller<In extends object, Out> implements Rollable<In, Out> {
   roll<T extends object = In, P extends object = In & T>(rolled: Roll<P, Out>): Rollable<P, Out> {
     const newRolled = (Component: React.ComponentType<P>): ((props: In) => Out) => {
       const rolledHoc = rolled(Component);
-      return this.rolled(rolledHoc as never);
+      return this.rolled(rolledHoc as never) as (props: In) => Out;
     };
 
     return new Roller<P, Out>(newRolled as unknown as Roll<P, Out>);
