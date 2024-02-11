@@ -43,7 +43,6 @@
     "react-i18next": "^14.0.3",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
-    "rtl-detect": "^1.1.2",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
