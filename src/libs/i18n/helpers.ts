@@ -77,6 +77,13 @@ export function getLocaleInfo(lang: LanguageName) {
   return { name, nativeName, textDirection, ISO_639_1, ISO_639_2 } as const;
 }
 
+export function getLocaleCode(langtag: string | LanguageName) {
+  const lang = resolveLanguageName(langtag);
+  const option = { ns: I18nScope._INFO_, lng: lang };
+  const ISO_639_1 = i18n.t('iso_639_1', option);
+  return ISO_639_1.toLowerCase();
+}
+
 export function getNativeName(lang: LanguageName) {
   return i18n.t('native_name', { ns: I18nScope._INFO_, lng: lang });
 }
