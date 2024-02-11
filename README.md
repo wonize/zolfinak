@@ -1,4 +1,5 @@
-![](./assets/moo-cover.svg)
+![@wonize/zolfinak](./assets/dark-mode.svg#gh-dark-mode-only)
+![@wonize/zolfinak](./assets/light-mode.svg#gh-light-mode-only)
 
 ## LICENSE
 
